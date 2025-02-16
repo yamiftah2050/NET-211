@@ -1,0 +1,211 @@
+Lab 1: Installing Ubuntu – Commands and Explanations
+
+ip a – Displays all network interfaces and their IP configurations.
+sudo apt-get install open-vm-tools-desktop – Installs open-source VMware tools for Ubuntu.
+sudo apt-get -y install vim – Installs the Vim text editor and automatically answers 'yes' to all prompts.
+sudo apt list --upgradeable – Lists all upgradable packages on your system.
+apt-get --just-print upgrade – Simulates an upgrade without making any actual changes.
+sudo apt-get check – Checks for broken dependencies in your package manager.
+sudo apt-get clean – Clears the local repository of downloaded package files.
+sudo apt-get autoremove – Removes unnecessary packages that were automatically installed but are no longer needed.
+sudo systemctl disable apt-daily.service – Disables the daily apt update service.
+sudo systemctl disable apt-daily.timer – Disables the daily apt update timer.
+sudo systemctl disable apt-daily-upgrade.timer – Disables the daily apt upgrade timer.
+sudo systemctl disable apt-daily-upgrade.service – Disables the daily apt upgrade service.
+sudo shutdown now – Immediately shuts down the Ubuntu system.
+
+
+
+
+Lab 2: Ubuntu Terminal & Shell – Commands and Explanations
+
+echo $0 – Displays the current shell you are using.
+# you can type anything here – Adds a comment in the shell that is ignored by the system.
+echo * – Lists all files in the current working directory.
+echo /bin/b* – Lists all files in /bin starting with the letter b.
+echo /bin/*b – Lists all files in /bin ending with the letter b.
+man man – Displays the manual page for the man command.
+cat --help – Shows help information for the cat utility.
+cp --help | less – Displays help information for the cp command page by page using less.
+help echo – Displays help for the echo built-in shell command.
+touch myfile – Creates an empty file named myfile.
+touch memo.1024 – Creates an empty file named memo.1024.
+ls – Lists all files in the current directory.
+ls -l – Lists files with details like permissions, owner, size, and modification time.
+ls /tmp – Lists all files in the /tmp directory.
+ls -l /tmp /var – Lists files in /tmp and /var with detailed information.
+file /etc/passwd – Displays the type of the /etc/passwd file.
+file /usr/bin/passwd – Displays the type of the /usr/bin/passwd file.
+file /var/log – Displays the type of the /var/log directory.
+file /usr/share/man/man1/ls.1.gz – Displays the type of the ls.1.gz file.
+file /dev/tty1 – Displays the type of the /dev/tty1 device.
+file /dev/sda1 – Displays the type of the /dev/sda1 device.
+file /dev/cdrom – Displays the type of the /dev/cdrom device.
+file /usr/share/pixmaps/faces/sky.jpg – Displays the type of the sky.jpg file.
+cat /etc/issue – Displays the full contents of the /etc/issue file.
+head /etc/passwd – Displays the first few lines of the /etc/passwd file.
+tail -n 1 /usr/share/dict/words – Displays the last word in the /usr/share/dict/words file.
+less /etc/bash.bashrc – Displays the /etc/bash.bashrc file one page at a time.
+man ls – Opens the manual page for the ls command.
+man 5 passwd – Opens the manual page for the /etc/passwd file format (section 5).
+whatis passwd – Shows short descriptions of all manual pages related to passwd.
+man -k who – Searches the manual pages for any command related to who.
+apropos who – Displays all commands related to who.
+man -k "disk space" – Searches for commands related to disk space.
+
+
+
+
+Lab 3: File Processing Utilities – Commands and Explanations
+
+Exercise 1: The Linux Hierarchical File Structure
+cd – Changes the current working directory to the home directory.
+pwd – Displays the current working directory.
+cd /tmp – Changes the working directory to /tmp.
+mkdir two – Creates a directory named two in the current directory.
+file two – Checks if two is a directory or file.
+cd two – Changes the working directory to two.
+touch fox – Creates an empty file named fox in the current directory.
+ls fox – Lists the fox file.
+ls /home/username/two – Lists the contents of the two directory using an absolute path.
+ls two – Lists the contents of two using a relative path.
+rmdir two – Tries to remove two (fails if it's not empty).
+rm two/fox – Removes the fox file inside the two directory.
+rmdir two – Removes the now empty two directory.
+cd /tmp, cd /var/log, cd ~ – Changes directories using absolute paths.
+cd ../../etc, ls ssh – Navigates using relative paths and lists OpenSSH config files.
+
+
+Exercise 2: More File Processing Utilities
+
+mkdir Unit2 – Creates Unit2 directory in the home directory.
+mkdir Unit2/memos, mkdir Unit2/reports – Creates subdirectories memos and reports.
+touch memo.one memo.two memo.three – Creates three empty memo files.
+touch report.jan report.feb report.mar – Creates three report files.
+cp memo.one Unit2/memos – Copies memo.one to memos.
+cp memo.two Unit2/memos/memo.2 – Copies and renames memo.two to memo.2.
+mv memo.three Unit2/memos – Moves memo.three to memos.
+mv report.jan report.feb report.mar Unit2/reports – Moves all report files to reports.
+ls, ls Unit2/memos, ls Unit2/reports – Lists contents of directories.
+cp report.jan report.jan.orig – Creates a backup of report.jan.
+tail -5 report.jan – Displays the last 5 lines of report.jan.
+cp /etc/passwd report.jan – Overwrites report.jan with /etc/passwd.
+cp -i /etc/hosts report.feb – Copies /etc/hosts to report.feb with confirmation.
+rm memo.one memo.two – Deletes files from home directory.
+rm -i Unit2/reports/report.jan – Deletes report.jan with confirmation.
+rm -r Unit2/memos – Deletes memos directory and its contents.
+
+
+Exercise 3: File Access Permissions
+touch lab3 – Creates a file named lab3.
+ls -l lab3 – Displays detailed permissions for lab3.
+ls -l /bin/bash – Shows permissions for the /bin/bash file.
+chmod 600 lab3 – Sets lab3 permissions to read/write for owner only.
+chmod 444 lab3 – Sets lab3 permissions to read-only for everyone.
+chmod 640 Unit2/reports/report.feb – Sets report.feb permissions to owner: read/write, group: read, others: no access.
+umask – Displays the current file permission mask.
+umask 077 – Sets the file permission mask to allow only owner access.
+touch mask.one, touch mask.two – Creates files to observe permission changes.
+mkdir masks – Creates a directory to observe permission changes.
+
+
+
+
+Lab 4: Linux Utilities – Commands and Explanations
+
+Exercise 1: Common Linux Utilities
+dpkg -s vim | grep -i status – Checks if Vim is installed.
+sudo apt install -y vim – Installs Vim text editor (if not already installed).
+vim lab4 – Opens Vim editor to create/edit a file named lab4.
+ls – Lists files in the current working directory.
+ls lab4 xyz – Lists lab4 if it exists and shows an error for xyz if it does not exist.
+cat lab4 – Displays the contents of lab4.
+cp lab4 lab4.copy – Copies lab4 to a new file named lab4.copy.
+rm lab4 – Deletes the lab4 file.
+mv lab4.copy lab4 – Renames lab4.copy back to lab4.
+grep the lab4 – Searches for lines containing "the" in lab4.
+grep Linux lab4 – Searches for lines containing "Linux" in lab4 (case-sensitive).
+less /etc/services – Displays /etc/services file one screen at a time.
+head /etc/services – Displays the first 10 lines of /etc/services.
+tail /etc/services – Displays the last 10 lines of /etc/services.
+hostname – Displays the hostname of the system.
+vim days – Creates a file named days and enters the days of the week.
+cat days – Displays the contents of the days file.
+sort days – Displays the days file contents in alphabetical order.
+sort days > sorteddays – Sorts days and saves it to a new file sorteddays.
+cat sorteddays – Displays the sorted contents of sorteddays.
+sudo apt install -y locate – Installs the locate utility.
+sudo updatedb – Updates the file database for locate.
+locate chess – Finds files with chess in their names.
+locate sky – Finds files with sky in their names.
+cp /usr/share/dict/words . – Copies the words file to the home directory.
+gzip words – Compresses the words file using gzip.
+gunzip words.gz – Decompresses the words.gz file.
+bzip2 words – Compresses the words file using bzip2.
+bunzip2 words.bz2 – Decompresses the words.bz2 file.
+
+
+
+
+
+Lab 5: System Administration (Part 1) – Commands and Explanations
+
+Exercise 1: Adding User Accounts & Groups
+head /etc/shadow – Tries to display the first 10 lines of /etc/shadow but fails due to permission denial.
+sudo head /etc/shadow – Displays the first 10 lines of /etc/shadow with root privileges.
+useradd -m -s /bin/bash max – Tries to add a user max but fails without root privileges.
+sudo useradd -m -s /bin/bash max – Adds user max with a home directory and Bash shell.
+sudo passwd max – Sets the password for user max (e.g., Pa$$w0rd).
+sudo adduser ben – Adds user ben interactively with a home directory and password setup.
+sudo adduser student – Adds user student interactively with a password.
+sudo groupadd linux – Creates a new group named linux.
+sudo usermod -aG linux max – Adds max to the linux group.
+groups max – Displays all groups the user max belongs to.
+sudo usermod -aG linux ben – Adds ben to the linux group.
+groups ben – Displays all groups the user ben belongs to.
+
+
+
+Exercise 2: System Administration Utilities
+
+grep student /etc/passwd – Searches for student in /etc/passwd.
+grep ben /etc/group – Searches for ben in /etc/group.
+grep -R apt /etc/apt* – Recursively searches for apt in /etc/apt and its subdirectories.
+grep -R -l apt /etc/apt* – Lists filenames that contain apt in /etc/apt.
+grep -n max /etc/group – Displays line numbers where max appears in /etc/group.
+grep -v bash /etc/passwd – Lists accounts in /etc/passwd that do not use the Bash shell.
+grep -vc bash /etc/passwd – Counts the number of accounts not using the Bash shell.
+sudo du -sh /home/ben – Displays the size of ben’s home directory in human-readable format.
+df -h / – Displays available disk space on the root filesystem in human-readable format.
+users – Lists all users currently logged in.
+who – Displays detailed information about logged-in users.
+w – Shows system uptime, logged-in users, and what each user is doing.
+free -h – Displays system memory usage in human-readable format.
+
+
+Exercise 3: Controlling Processes
+
+top – Displays a real-time view of system processes.
+Press u – Filters top output by user (e.g., syslog).
+Press f then s – Sorts top output by memory usage (%MEM).
+Press h – Displays top help screen.
+ps – Lists processes started from the current shell.
+ps -ef or ps -aux – Displays all running processes.
+ps -U username – Lists all processes owned by a specific user.
+ps -ef | grep bash – Displays all processes running the bash shell.
+ps -o uid,pid,comm – Displays UID, PID, and command for processes started from the current shell.
+sleep 100 & – Runs the sleep command in the background.
+ps – Lists active processes to find the PID.
+kill <PID> – Terminates the specified process.
+
+
+
+Optional Bonus: Real and Effective UIDs
+
+sudo apt install -y xterm – Installs the xterm terminal.
+xterm & – Launches an xterm terminal.
+who am i – Displays your real UID.
+whoami – Displays your effective UID.
+sudo who am i – Displays your real UID while working with root privileges.
+sudo whoami – Displays your effective UID as root.
+exit – Exits the xterm terminal.
